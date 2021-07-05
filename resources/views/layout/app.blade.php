@@ -62,7 +62,7 @@
                                         Company
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a href="{{ route('admin.prospects.dashboard') }}" class="dropdown-item">Manage Company</a>
+                                        <a href="{{ route('admin.companys.dashboard') }}" class="dropdown-item">Manage Company</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -71,7 +71,7 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        {{-- <a href="{{ route('admin.prospects.dashboard') }}" class="dropdown-item">Manage Prospects</a> --}}
+                                        {{-- <a href="{{ route('admin.companys.dashboard') }}" class="dropdown-item">Manage companys</a> --}}
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

@@ -27,5 +27,5 @@ Auth::routes(['user' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::prefix('prospects')->middleware('auth')->name('admin.prospects.')->group(base_path('routes/web/prospects.php'));
+Route::prefix('companys')->middleware('auth')->name('admin.companys.')->group(base_path('routes/web/companys.php'));
 

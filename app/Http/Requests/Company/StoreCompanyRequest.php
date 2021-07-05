@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Prospects\Contacts;
+namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateContactRequest extends FormRequest
+class StoreCompanyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateContactRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user();
+        return true;
     }
 
     /**
@@ -24,11 +24,11 @@ class UpdateContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'nullable',
-            'last_name' => 'nullable',
-            'website' => 'nullable',
-            'eemail' => 'nullable',
-            'phone' => 'nullable',
+            'name' => 'required',
+            'email' => 'required|unique:companys',
+            'logo' => 'nullable|mimes:png,jpg,jpeg|max:10000',
+            'website' => 'required'
         ];
+        // return $rules;
     }
 }

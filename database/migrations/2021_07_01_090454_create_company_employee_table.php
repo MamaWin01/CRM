@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProspectContactsTable extends Migration
+class CreateCompanyEmployeeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateProspectContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prospect_contacts', function (Blueprint $table) {
+        Schema::create('company_employee', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('prospect_id');
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->text('logo')->nullable();
+            $table->unsignedInteger('company_id');
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('website')->nullable();
+            $table->string('eemail')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ class CreateProspectContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prospect_contacts');
+        Schema::dropIfExists('company_employee');
     }
 }

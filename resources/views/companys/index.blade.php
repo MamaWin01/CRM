@@ -19,7 +19,7 @@
                                         Action
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" href="{{ route('admin.prospects.create') }}">Create Company</a></li>
+                                      <li><a class="dropdown-item" href="{{ route('admin.companys.create') }}">Create Company</a></li>
                                     </ul>
                             </div>
                         </div>
@@ -28,10 +28,10 @@
             </div>
     </div>
 {{-- Card Style For Logo --}}
-        @if ($prospects->count())
-            {{ $prospects->links()}}
-            @foreach ($prospects as $cmp)
-                @include('prospects.partials.prospect-card', ['prospect' => $cmp])
+        @if ($companys->count())
+            {{ $companys->links()}}
+            @foreach ($companys as $cmp)
+                @include('companys.partials.company-card', ['company' => $cmp])
             @endforeach
 
         @endif
@@ -47,7 +47,7 @@
 
 
 {{-- Table Style Cant show Logo --}}
-                {{-- @if ($prospects->count())
+                {{-- @if ($companys->count())
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -60,7 +60,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($prospects as $cmp)
+                            @foreach ($companys as $cmp)
                                 <tr> --}}
                                     {{-- <th scope="row">{{ $loop ->iteration}}</th> --}}
                                     {{-- <td>{{ $cmp-> name }}</td>

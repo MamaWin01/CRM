@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Prospect;
+namespace App\Http\Requests\Company\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProspectRequest extends FormRequest
+class UpdateEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreProspectRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user();
     }
 
     /**
@@ -24,11 +24,11 @@ class StoreProspectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|unique:prospects',
-            'logo' => 'nullable|mimes:png,jpg,jpeg|max:10000',
-            'website' => 'required'
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
+            'website' => 'nullable',
+            'eemail' => 'nullable',
+            'phone' => 'nullable',
         ];
-        // return $rules;
     }
 }

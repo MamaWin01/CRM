@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Prospect\Contacts;
+namespace App\Http\Requests\Company\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreContactRequest extends FormRequest
+class StoreEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

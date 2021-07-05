@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Prospects extends Model
+class Companys extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function contact()
+    public function employee()
     {
-        return $this->hasOne(\App\Models\ProspectContact::class);
+        return $this->hasOne(\App\Models\CompanyEmployee::class);
     }
 }

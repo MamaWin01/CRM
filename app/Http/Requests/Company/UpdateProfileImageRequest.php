@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Prospect;
+namespace App\Http\Requests\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProspectRequest extends FormRequest
+class UpdateProfileImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class UpdateProspectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|unique:prospects,email,'. $this->prospect->id,
-            'website' => 'required',
+            'image' => 'required|max:1000'
         ];
     }
 }

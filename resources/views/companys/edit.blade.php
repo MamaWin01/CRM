@@ -11,18 +11,18 @@
     <div class="card mt-3">
         <div class="card-body">
             <div class="d-flex">
-                <h1>Edit Company <small class="text-muted">{{ $prospect->name }}</small></h1>
+                <h1>Edit Company <small class="text-muted">{{ $company->name }}</small></h1>
                 <div class="ml-auto">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Actions
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ route('admin.prospects.dashboard') }}">View Company</a>
-                          {{-- <a class="dropdown-item" href={{ route('admin.prospects.show', ['prospect' => $prospect->id]) }}>View Employee</a> --}}
+                          <a class="dropdown-item" href="{{ route('admin.companys.dashboard') }}">View Company</a>
+                          {{-- <a class="dropdown-item" href={{ route('admin.companys.show', ['company' => $company->id]) }}>View Employee</a> --}}
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="#" onclick="deleteProspect()">Delete Company</a>
-                            <form action="{{ route('admin.prospects.delete', $prospect->id) }}" id="delete-prospect-form" style="display:none" method="POST">
+                          <a class="dropdown-item text-danger" href="#" onclick="deleteCompany()">Delete Company</a>
+                            <form action="{{ route('admin.companys.delete', $company->id) }}" id="delete-company-form" style="display:none" method="POST">
                                 @method('delete')
                                 @csrf
                             </form>
@@ -38,16 +38,16 @@
             {{-- Placeholder for image and option to change out just the image --}}
             <div class="card mt-3">
                 <div class="card-body">
-                    @if ($prospect->logo)
-                        <img src="{{ Storage::url($prospect->logo) }}" style="max-width: 100%" alt="">
+                    @if ($company->logo)
+                        <img src="{{ Storage::url($company->logo) }}" style="max-width: 100%" alt="">
                     @else
                         <img src="/image/user.png" style="max-width: 100%" alt="">
                     @endif
                     <hr>
                     <button class="btn btn-outline-primary btn-sm btn-block" data-toggle="modal" data-target="#updateProfileImageModal">New Profile Image</button>
-                    @if ($prospect->logo)
+                    @if ($company->logo)
                         <button class="btn btn-outline-danger btn-sm btn-block" onclick="deleteProfileImage()"><i class="fas fa-trash"></i> Delete Profile Image</button>
-                        <form action="{{ route('admin.prospects.delete.profile-image', $prospect->id) }}" method="POST" id="delete-profile-image-form">
+                        <form action="{{ route('admin.companys.delete.profile-image', $company->id) }}" method="POST" id="delete-profile-image-form">
                             @csrf
                             @method('DELETE')
                         </form>
@@ -71,23 +71,23 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('admin.prospects.update', $prospect->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.companys.update', $company->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
                         <div class="form-group">
                             <label for="">Name</label>
-                            <input type="text" class="form-control" name="name" value="{{ $prospect->name }}">
+                            <input type="text" class="form-control" name="name" value="{{ $company->name }}">
                         </div>
 
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="email" class="form-control" name="email" value="{{ $prospect->email }}">
+                            <input type="email" class="form-control" name="email" value="{{ $company->email }}">
                         </div>
 
                         <div class="form-group">
                             <label for="">Website</label>
-                            <input type="website" class="form-control" name="website" value="{{ $prospect->website }}">
+                            <input type="website" class="form-control" name="website" value="{{ $company->website }}">
                         </div>
 
                         <button class="btn btn-primary float-right">Update</button>
@@ -95,18 +95,18 @@
                 </div>
             </div>
 
-{{-- the contact(employee) are unable due to SQL not responding --}}
+{{-- the employee are unable due to SQL not responding --}}
 
             {{-- <div class="card mt-3">
                 <div class="card-body">
-                    <h5>Edit Contact Details</h5>
+                    <h5>Edit employee Details</h5>
                     <hr>
-                    @if ($prospect->contact)
-                        @include('admin.prospects.contact.partials.edit-contact-form', ['prospect_id' => $prospect->id, 'contact' => $prospect->contact])
+                    @if ($company->employee)
+                        @include('admin.companys.employee.partials.edit-employee-form', ['company_id' => $company->id, 'employee' => $company->employee])
                     @else
                         <div class="d-flex">
                             <div class="mx-auto">
-                                <a href="{{ route('admin.prospects.contact.create', $prospect->id) }}" class="btn btn-outline-primary">Create Contact Details</a>
+                                <a href="{{ route('admin.companys.employee.create', $company->id) }}" class="btn btn-outline-primary">Create employee Details</a>
                             </div>
                         </div>
                     @endif
@@ -127,7 +127,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.prospects.update.profile-image', $prospect->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.companys.update.profile-image', $company->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -153,11 +153,11 @@
                 document.querySelector('form#delete-profile-image-form').submit()
             }
         }
-        function deleteProspect() {
-            var r = confirm("Are you sure you want to delete this prospect? This can't be undone!")
+        function deleteCompany() {
+            var r = confirm("Are you sure you want to delete this company? This can't be undone!")
 
             if (r) {
-                document.querySelector('form#delete-prospect-form').submit()
+                document.querySelector('form#delete-company-form').submit()
             }
         }
     </script>

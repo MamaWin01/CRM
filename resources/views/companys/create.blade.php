@@ -13,7 +13,7 @@
                                 Action
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                              <li><a class="dropdown-item" href="{{ route('admin.prospects.dashboard')}}">Home</a></li>
+                              <li><a class="dropdown-item" href="{{ route('admin.companys.dashboard')}}">Home</a></li>
                             </ul>
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                 @endif
 
 
-                    <form action="{{ route('admin.prospects.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.companys.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
