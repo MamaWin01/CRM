@@ -18,7 +18,7 @@ class CompanysController extends Controller
      */
     public function index()
     {
-        return view('companys.index', ['companys' => Companys::latest()->paginate(20)]);
+        return view('companys.index', ['companys' => Companys::latest()->simplePaginate(10)]);
     }
 
 
