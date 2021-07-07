@@ -11,17 +11,17 @@
     <div class="card mt-3">
         <div class="card-body">
             <div class="d-flex">
-                <h1>Edit Company <small class="text-muted">{{ $company->name }}</small></h1>
+                <h1>{{__('Edit Company')}} <small class="text-muted">{{ $company->name }}</small></h1>
                 <div class="ml-auto">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Actions
+                            {{__('Actions')}}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="{{ route('admin.companys.dashboard') }}">View Company</a>
+                          <a class="dropdown-item" href="{{ route('admin.companys.dashboard') }}">{{__('View Company')}}</a>
                           {{-- <a class="dropdown-item" href={{ route('admin.companys.show', ['company' => $company->id]) }}>View Employee</a> --}}
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item text-danger" href="#" onclick="deleteCompany()">Delete Company</a>
+                          <a class="dropdown-item text-danger" href="#" onclick="deleteCompany()">{{__('Delete Company')}}</a>
                             <form action="{{ route('admin.companys.delete', $company->id) }}" id="delete-company-form" style="display:none" method="POST">
                                 @method('delete')
                                 @csrf
@@ -44,9 +44,9 @@
                         <img src="/image/user.png" style="max-width: 100%" alt="">
                     @endif
                     <hr>
-                    <button class="btn btn-outline-primary btn-sm btn-block" data-toggle="modal" data-target="#updateProfileImageModal">New Profile Image</button>
+                    <button class="btn btn-outline-primary btn-sm btn-block" data-toggle="modal" data-target="#updateProfileImageModal">{{__('New Profile Image')}}</button>
                     @if ($company->logo)
-                        <button class="btn btn-outline-danger btn-sm btn-block" onclick="deleteProfileImage()"><i class="fas fa-trash"></i> Delete Profile Image</button>
+                        <button class="btn btn-outline-danger btn-sm btn-block" onclick="deleteProfileImage()"><i class="fas fa-trash"></i> {{__('Delete Profile Image')}}</button>
                         <form action="{{ route('admin.companys.delete.profile-image', $company->id) }}" method="POST" id="delete-profile-image-form">
                             @csrf
                             @method('DELETE')

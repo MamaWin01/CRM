@@ -41,8 +41,21 @@
 
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                     <!-- Right Side Of Navbar -->
+                     <ul class="navbar-nav ml-auto">
+                        @if(count(config('app.languages')) > 1)
+                            <li class="nav-item dropdown d-md-down-none">
+                                <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    {{ strtoupper(app()->getLocale()) }}
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    @foreach(config('app.languages') as $langLocale => $langName)
+                                        <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
+                                    @endforeach
+                                </div>
+                            </li>
+                        @endif
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -59,10 +72,10 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Company
+                                        {{__('Company')}}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a href="{{ route('admin.companys.dashboard') }}" class="dropdown-item">Manage Company</a>
+                                        <a href="{{ route('admin.companys.dashboard') }}" class="dropdown-item">{{__('Manage Company')}}</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -78,9 +91,9 @@
                                             {{ __('Logout') }}
                                         </a>
                                     </div>
-                                        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
-                                        </form> --}}
+                                        </form>
                                 </li>
                         @endguest
                     </ul>

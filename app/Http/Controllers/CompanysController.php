@@ -46,7 +46,21 @@ class CompanysController extends Controller
             $company->update(['logo'=> $path]);
         }
 
-        return redirect()->route('admin.companys.dashboard', $company->id)->with('success', 'Succesfully Create New Companies');
+        $company_data = [];
+        if ($request->input('en_title')) {
+            $company_data['en'] = [
+                'title' => $request->input('en_title'),
+                'full_text' => $request->input('en_full_text'),
+            ];
+        }
+        if ($request->input('id_title')) {
+            $company_data['id'] = [
+                'title' => $request->input('id_title'),
+                'full_text' => $request->input('id_full_text'),
+            ];
+        }
+
+        return redirect()->route('admin.companys.dashboard', $company->id)->with('success', __('Succesfully Create New Companies'));
     }
 
     /**
@@ -82,7 +96,7 @@ class CompanysController extends Controller
     {
         $company->update($request->validated());
 
-        return back()->with('success', 'Successfully updated company details!');
+        return back()->with('success', __('Successfully updated company details!'));
     }
 
     public function updateProfileImage(UpdateProfileImageRequest $request, Companys $company)
@@ -94,7 +108,7 @@ class CompanysController extends Controller
 
         $company->update(['logo' => $path]);
 
-        return back()->with('success', 'Successfully updated profile image');
+        return back()->with('success', __('Successfully updated profile image'));
     }
 
     public function destroyProfileImage(Companys $company)
@@ -105,7 +119,7 @@ class CompanysController extends Controller
             $company->update(['logo' => null]);
         }
 
-        return back()->with('success', 'Successfully deleted profile image!');
+        return back()->with('success', __('Successfully deleted profile image!'));
     }
     /**
      * Remove the specified resource from storage.
@@ -122,7 +136,7 @@ class CompanysController extends Controller
 
         $company->delete();
 
-        return redirect()->route('admin.companys.dashboard')->with('succees', 'Successfully Delete Company');
+        return redirect()->route('admin.companys.dashboard')->with('succees', __('Successfully Delete Company'));
     }
 
 }

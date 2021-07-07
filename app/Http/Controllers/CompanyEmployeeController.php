@@ -21,12 +21,12 @@ class CompanyEmployeeController extends Controller
     {
         $employee = CompanyEmployee::updateOrCreate(['company_id' => $company->id], $request->validated());
 
-        return redirect()->route('admin.companys.show', $company->id)->with('success', 'Successfully Create New company');
+        return redirect()->route('admin.companys.show', $company->id)->with('success', __('Successfully Create New company'));
     }
     public function update(UpdateEmployeeRequest $request, Companys $company)
     {
         $company->employee->update($request->validated());
 
-        return redirect()->route('admin.companys.edit', $company->id)->with('success', 'Successfully updated company contact details!');
+        return redirect()->route('admin.companys.edit', $company->id)->with('success', __('Successfully updated company contact details!'));
     }
 }

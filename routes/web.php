@@ -18,6 +18,10 @@ use App\Http\Controllers\EmployeeController;
 */
 
 Route::get('/', function () {
+    return redirect()->route('home-locale', app()->getLocale());
+})->name('home');
+
+Route::get('/', function () {
     return view('welcome');
 });
 

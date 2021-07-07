@@ -12,14 +12,14 @@
         <div class="card mt-3">
             <div class="card-body">
                 <div class="d-flex">
-                    <h1 style="font-size:33px ">Company <small style="font-size:28px" class="text-muted">Showing all Company</small></h1>
+                    <h1 style="font-size:33px ">{{__('Company')}} <small style="font-size:28px" class="text-muted">{{__('Showing All Company')}}</small></h1>
                         <div class="ml-auto d-inline">
                             <div class="dropdown">
                                     <a id="navbarDropdown" class="dropdown-toggle btn btn-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Action
+                                        {{__('Action')}}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton1">
-                                      <li><a class="dropdown-item" href="{{ route('admin.companys.create') }}">Create Company</a></li>
+                                      <li><a class="dropdown-item" href="{{ route('admin.companys.create') }}">{{__('Create Company')}}</a></li>
                                     </ul>
                             </div>
                         </div>
